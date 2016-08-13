@@ -4,10 +4,12 @@
   "description": "collaborative gameboy emulation powered by socket.io – weplay.io",
   "dependencies": {
     "blob": "0.0.1",
+    "body-parser": "^1.15.2",
     "browserify": "^13.1.0",
     "browserify-middleware": "^7.0.0",
     "debug": "0.7.4",
     "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
     "forwarded-for": "0.0.0",
     "mysql": "^2.11.1",
     "redis": "0.10.1",
