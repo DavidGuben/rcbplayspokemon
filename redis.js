@@ -4,6 +4,10 @@ var handlebars = require('express-handlebars');
 var sequelize = require('sequelize');
 
 
+
+var userlogininfo = require('./models')['userlogininfo'];
+userlogininfo.sync();
+
 var app = express();
 
 app.use(express.static(__dirname,  + '/public'));
