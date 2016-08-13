@@ -1,8 +1,8 @@
 {
-
-    "TWITCH_OAUTH": "OAUTH_HERE",
-    "TWITCH_USERNAME": "Rcbplayspokemon",
-    "TWITCH_CHANNEL": "#Rcbplayspokemon",
+    "TWITCH_IP": "irc.twitch.tv",
+    "TWITCH_OAUTH": "oauth:bvaet635foy6ct5php5ltyvxmilmbd",
+    "TWITCH_USERNAME": "rcbplayspokemon",
+    "TWITCH_CHANNEL": "#rcbplayspokemon",
     "CONFIG_OS": "windows",
     "CONFIG_PROGRAM_NAME": "VisualBoyAdvance",
     "CONFIG_MAX_CHAR_NAME": 8,

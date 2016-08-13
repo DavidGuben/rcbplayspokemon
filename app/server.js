@@ -49,3 +49,4 @@ client.addListener('error', function(message) {
 
 client.connect();
 console.log('Connecting...');
+console.log("connected");

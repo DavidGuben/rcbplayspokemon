@@ -26,7 +26,7 @@ var ircConfig = {
 
     // Title of the window of the program
     // Ex: 'Desmume' or 'VBA'
-    programName: programName || 'VBA',
+    programName: programName || 'VisualBoyAdvance',
 
     // Ex: irc.twitch.tv or 199.9.252.26
     server: serverIP || 'irc.twitch.tv',
