@@ -1,10 +1,10 @@
 {
 
-    "TWITCH_OAUTH": "OAUTH_HERE",
+    "TWITCH_IP": "irc.freenode.net",
     "TWITCH_USERNAME": "Rcbplayspokemon",
-    "TWITCH_CHANNEL": "#Rcbplayspokemon",
-    "CONFIG_OS": "windows",
-    "CONFIG_PROGRAM_NAME": "VisualBoyAdvance",
+    "TWITCH_CHANNEL": "#this_channel",
+    "CONFIG_OS": "other",
+    "CONFIG_PROGRAM_NAME": "ZSNES",
     "CONFIG_MAX_CHAR_NAME": 8,
     "CONFIG_MAX_CHAR_COMMAND": 20,
     "CONFIG_SEND_KEY": true,
