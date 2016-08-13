@@ -4,6 +4,12 @@ var browserify = require('browserify-middleware');
 var forwarded = require('forwarded-for');
 var debug = require('debug');
 
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var handlebars = require('express-handlebars');
+var sequelize = require('sequelize');
+
 process.title = 'weplay-io';
 
 var port = process.env.WEPLAY_PORT || 3001;
