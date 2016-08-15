@@ -46,6 +46,8 @@ client.addListener('message' + config.channel, function(from, message) {
 client.addListener('error', function(message) {
     console.log('error: ', message);
 });
-
+var i = 0;
 client.connect();
 console.log('Connecting...');
+console.log('connected to irc.freenote.net');
+console.log('Emulator: ZSNES');

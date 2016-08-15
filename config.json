@@ -3,7 +3,7 @@
     "TWITCH_USERNAME": "Rcbplayspokemon",
     "TWITCH_CHANNEL": "#playnow",
     "CONFIG_OS": "other",
-    "CONFIG_PROGRAM_NAME": "VisualBoyAdvance",
+    "CONFIG_PROGRAM_NAME": "ZSNES",
     "CONFIG_MAX_CHAR_NAME": 20,
     "CONFIG_MAX_CHAR_COMMAND": 20,
     "CONFIG_SEND_KEY": true,
