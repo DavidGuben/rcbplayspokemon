@@ -1,11 +1,10 @@
 {
-
     "TWITCH_IP": "irc.freenode.net",
     "TWITCH_USERNAME": "Rcbplayspokemon",
-    "TWITCH_CHANNEL": "#this_channel",
+    "TWITCH_CHANNEL": "#playnow",
     "CONFIG_OS": "other",
-    "CONFIG_PROGRAM_NAME": "ZSNES",
-    "CONFIG_MAX_CHAR_NAME": 8,
+    "CONFIG_PROGRAM_NAME": "VisualBoyAdvance",
+    "CONFIG_MAX_CHAR_NAME": 20,
     "CONFIG_MAX_CHAR_COMMAND": 20,
     "CONFIG_SEND_KEY": true,
     "CONFIG_FILTERED_COMMANDS": [],
