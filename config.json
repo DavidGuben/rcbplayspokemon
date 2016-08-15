@@ -1,0 +1,29 @@
+{
+<<<<<<< HEAD
+<<<<<<< HEAD
+    "TWITCH_IP": "irc.twitch.tv",
+    "TWITCH_OAUTH": "oauth:bvaet635foy6ct5php5ltyvxmilmbd",
+    "TWITCH_USERNAME": "rcbplayspokemon",
+    "TWITCH_CHANNEL": "#rcbplayspokemon",
+    "CONFIG_OS": "windows",
+    "CONFIG_PROGRAM_NAME": "VisualBoyAdvance",
+=======
+
+=======
+>>>>>>> 29c72aabbd67fa12e0c6a58d16026eff684a94f2
+    "TWITCH_IP": "irc.freenode.net",
+    "TWITCH_USERNAME": "Rcbplayspokemon",
+    "TWITCH_CHANNEL": "#playnow",
+    "CONFIG_OS": "other",
+    "CONFIG_PROGRAM_NAME": "ZSNES",
+<<<<<<< HEAD
+>>>>>>> 352ddb6b34d249e0f272525e1b3ec9996fe14227
+    "CONFIG_MAX_CHAR_NAME": 8,
+=======
+    "CONFIG_MAX_CHAR_NAME": 20,
+>>>>>>> 29c72aabbd67fa12e0c6a58d16026eff684a94f2
+    "CONFIG_MAX_CHAR_COMMAND": 20,
+    "CONFIG_SEND_KEY": true,
+    "CONFIG_FILTERED_COMMANDS": [],
+    "CONFIG_THROTTLED_COMMANDS": []
+}
