@@ -9,8 +9,8 @@ var source = {
         port: 3306,
         host: 'localhost',
         user: 'root',
-        password: "Njmitx123",
-        database: "starwars"
+        password: null,
+        database: "rcbplayspokemon"
     },
 
     // JawsDB -- Need JawsDB host, user, password, and database keys
