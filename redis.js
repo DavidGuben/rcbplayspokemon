@@ -3,15 +3,13 @@ var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
 var sequelize = require('sequelize');
 
-
-
 var userlogininfos = require('./models')['userlogininfos'];
+
 userlogininfos.sync();
 
 var app = express();
 
-
-app.use(express.static(__dirname,  + '/public'));
+app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({
   extended: false
