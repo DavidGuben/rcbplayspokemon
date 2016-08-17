@@ -23,14 +23,6 @@ app.engine('handlebars',handlebars({
 
 app.set('view engine', 'handlebars');
 
-//app.get('/', function(req, res){
-    //var indexObject = {
-    //username: "mike",
-    //password: "code"
-    //}
-    //res.render('test', indexObject);
-//});
-
 app.get('/', function(req, res){
 
     userlogininfos.findAll({}).then(function(result){
