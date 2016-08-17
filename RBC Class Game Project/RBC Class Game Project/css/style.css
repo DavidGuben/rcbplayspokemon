@@ -1,0 +1,72 @@
+/*
+ *
+ * login-register modal
+ * Autor: Creative Tim
+ * Web-autor: creative.tim
+ * Web script: http://creative-tim.com
+ * 
+ */
+ 
+/*  Shake animation  */
+
+.bg{
+  background-image: url("../img/bg.jpg");
+  height: 700px;
+}
+.logo{
+  margin: 10px 0px 10px;
+}
+.page-container{
+  max-width: 500px;
+}
+.form-buffer{
+  
+  font-size: 19px;
+  border: solid 3px #f6a204;
+  padding: 0px 0px 0px 0px;
+}
+.form-contents{
+  color: white;
+  font-size: 19px;
+  text-decoration: underline;
+}
+.contents{
+  margin-left: 15px;
+}
+.heading-img{
+  margin: 15px 0px 15px 0px;
+}
+.popup-bg{
+  background-image: url("../img/popop-bg.png");
+  /* border: solid 4px #fff; */
+}
+.login{
+  margin-top: 90px;
+  height: 547px;
+}
+.logo-imgbuffer{
+  margin-top: 15px;
+}
+.forgotpass{
+  margin-bottom: 10px;
+  font-size: 19px;
+  font-weight: bold;
+  color: #fff;
+}
+.submit-buffer{
+  margin-top: 20px;
+}
+.login .form-control{
+  font-weight: bold;
+  color: #fff!important;
+  border-radius: 3px;
+  background-color: rgba(0, 0, 0, 0.09);
+  box-shadow: 0 1px 0px 0px rgba(0, 0, 0, 0.09) inset;
+}
+.inputborder{
+  border-left: None;
+  border-right: None;
+  border-top: None;
+  border-radius: 0!important;
+  border-bottom: solid 2px; 
+}

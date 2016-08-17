@@ -1,7 +1,14 @@
-var irc = require('irc'),
-printf = require('printf'),
+// irc and game connections
+var irc    = require('irc'),
+printf     = require('printf'),
 keyHandler = require('./keyHandler.js'),
-config = require('./config.js');
+config     = require('./config.js');
+
+// socket webchat
+var app    = require('express')();
+var http   = require('http').Server(app);
+var io     = require('socket.io')(http);
+
 
 var client = new irc.Client(config.server, config.nick, {
     channels: [config.channel],
@@ -24,7 +31,6 @@ new RegExp('^(' + config.commands.join('|') + ')$', 'i');
 
 client.addListener('message' + config.channel, function(from, message) {
     if (message.match(commandRegex)) {
-
         if (config.printToConsole) {
             //format console output if needed
             var maxName = config.maxCharName,
@@ -34,6 +40,7 @@ client.addListener('message' + config.channel, function(from, message) {
             //format log
             console.log(printf('%-' + maxName + 's % ' + maxCommand + 's',
                 logFrom, logMessage));
+
         }
 
         // Should the message be sent the program?
@@ -48,7 +55,39 @@ client.addListener('error', function(message) {
 });
 var i = 0;
 client.connect();
-console.log('Connecting...');
-console.log("connected");
+
+// express route for web chat
+app.get('/', function(req, res) {
+  res.sendFile(__dirname + '/index.html');
+});
+
+// socket.io chat connection
+io.on('connection', function(socket) {
+  console.log('A user connected');
+  socket.on('disconnect', function() {
+    console.log('A user disconnected');
+  });
+});
+
+// socket.io chat message display (to console)
+io.on('connection', function(socket) {
+  socket.on('chat message', function(msg) {
+    console.log('message: ' + msg);
+  });
+});
+
+// socket.io chat message display (to page)
+io.on('connection', function(socket) {
+  socket.on('chat message', function(msg) {
+    io.emit('chat message', msg);
+  });
+});
+
+http.listen(3000, function() {
+  console.log(' listening on *:3000');
+});
+
+// connection log
+console.log('Connecting to IRC...');
 console.log('connected to irc.freenote.net');
 console.log('Emulator: ZSNES');
