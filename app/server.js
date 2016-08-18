@@ -9,15 +9,15 @@ var app    = require('express')();
 var http   = require('http').Server(app);
 var io     = require('socket.io')(http);
 
-
+// irc client connection
 var client = new irc.Client(config.server, config.nick, {
     channels: [config.channel],
-    port: config.port || 6667,
+    port: config.port || 6667, // this is the port the irc connects to
     sasl: false,
     nick: config.nick,
-    userName: config.nick,
-    password: config.password,
-    //This has to be false, since SSL in NOT supported by twitch IRC (anymore?)
+    userName: config.nick,     // pulls username from irc client  (AndroIRC)
+    password: config.password, // pulls passwordk from irc client (AndroIRC)
+    // This has to be false, since SSL in NOT supported by twitch IRC
     // see: http://help.twitch.tv/customer/portal/articles/1302780-twitch-irc
     secure: false,
     floodProtection: config.floodProtection || false,
@@ -26,34 +26,39 @@ var client = new irc.Client(config.server, config.nick, {
     autoRejoin: true
 });
 
+// regexp pulls the commands from the keys
 var commandRegex = config.regexCommands ||
 new RegExp('^(' + config.commands.join('|') + ')$', 'i');
 
+// listens to irc connection
 client.addListener('message' + config.channel, function(from, message) {
+    // display the mssage only if it matches an available command
     if (message.match(commandRegex)) {
         if (config.printToConsole) {
-            //format console output if needed
+            // format console output if needed
             var maxName = config.maxCharName,
             maxCommand = config.maxCharCommand,
             logFrom = from.substring(0, maxName),
             logMessage = message.substring(0, 6).toLowerCase();
-            //format log
+            // format log
             console.log(printf('%-' + maxName + 's % ' + maxCommand + 's',
                 logFrom, logMessage));
-
+                  io.emit('chat message', logFrom +' : '+ logMessage);
         }
 
         // Should the message be sent the program?
         if (config.sendKey) {
+	    // sends message to keyhandler and from keyhandler to program
             keyHandler.sendKey(message.toLowerCase());
         }
     }
 });
-
+// error listener
 client.addListener('error', function(message) {
     console.log('error: ', message);
 });
-var i = 0;
+
+// client connection
 client.connect();
 
 // express route for web chat
@@ -73,16 +78,14 @@ io.on('connection', function(socket) {
 io.on('connection', function(socket) {
   socket.on('chat message', function(msg) {
     console.log('message: ' + msg);
-  });
-});
-
-// socket.io chat message display (to page)
-io.on('connection', function(socket) {
-  socket.on('chat message', function(msg) {
     io.emit('chat message', msg);
   });
 });
 
+process.setMaxListeners(16);
+
+
+// server listener
 http.listen(3000, function() {
   console.log(' listening on *:3000');
 });
