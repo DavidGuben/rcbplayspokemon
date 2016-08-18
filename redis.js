@@ -1,25 +1,25 @@
 var express = require('express');
-var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
+var bodyParser = require('body-parser');
 var sequelize = require('sequelize');
 var app = express();
-
+var path = require('path');
 var userlogininfos = require('./models')['userlogininfos'];
 
 console.log(__dirname + '/public');
-app.use(express.static(__dirname + '/public'));
 
 app.use(bodyParser.urlencoded({
   extended: false
 }));
 
 app.engine('handlebars',handlebars({
-  defualtLayout: 'main'
+  defaultLayout: 'main'
 }));
 
 app.set('view engine', 'handlebars');
 
 
+app.use(express.static(path.join(__dirname)));
 
 app.get('/', function(req, res){
  
