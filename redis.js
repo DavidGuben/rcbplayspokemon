@@ -6,7 +6,6 @@ var app = express();
 var path = require('path');
 var userlogininfos = require('./models')['userlogininfos'];
 
-console.log(__dirname + '/public');
 
 app.use(bodyParser.urlencoded({
   extended: false
