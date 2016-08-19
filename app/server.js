@@ -1,13 +1,37 @@
 // irc and game connections
-var irc    = require('irc'),
-printf     = require('printf'),
-keyHandler = require('./keyHandler.js'),
-config     = require('./config.js');
+var irc        = require('irc'),
+printf         = require('printf'),
+keyHandler     = require('./keyHandler.js'),
+config         = require('./config.js');
 
 // socket webchat
-var app    = require('express')();
-var http   = require('http').Server(app);
-var io     = require('socket.io')(http);
+var app        = require('express')();
+var http       = require('http').Server(app);
+var io         = require('socket.io')(http);
+
+// login and sequelize
+var handlebars = require('express-handlebars');
+var bodyParser = require('body-parser');
+var sequelize  = require('sequelize');
+var path       = require('path');
+
+// database
+var userlogininfos = require('./models')['userlogininfos'];
+
+console.log(__dirname + '/public');
+
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
+
+app.engine('handlebars',handlebars({
+  defaultLayout: 'main'
+}));
+
+app.set('view engine', 'handlebars');
+
+app.use(express.static(path.join(__dirname)));
+
 
 // irc client connection
 var client = new irc.Client(config.server, config.nick, {
@@ -83,6 +107,9 @@ io.on('connection', function(socket) {
 });
 
 process.setMaxListeners(16);
+
+//login functionality
+
 
 
 // server listener
