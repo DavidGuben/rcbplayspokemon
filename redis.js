@@ -6,7 +6,6 @@ var app = express();
 var path = require('path');
 var userlogininfos = require('./models')['userlogininfos'];
 
-console.log(__dirname + '/public');
 
 app.use(bodyParser.urlencoded({
   extended: false
@@ -26,14 +25,16 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
-app.get('/:id', function(req, res) {
+app.get('/home/:id', function(req, res) {
+    console.log("beginning of redirect");
     console.log(req.params);
     console.log('specific users homepage' + req.params.id);
-    userlogininfos.findOne({ where: {id: req.params.id}}).then(function(user) {
-      console.log(user.dataValues);
-      var user = user.dataValues;
+    userlogininfos.findOne({ where: {id: req.params.id}}).then(function(userData) {
+      console.log(userData);
+      var user = userData.dataValues;
+      console.log("before home render");
       res.render('home', {
-        userData: user
+        userData: userData
       });
     });
 });
@@ -42,7 +43,8 @@ app.post('/login', function(req, res){
 
     userlogininfos.findOne({ where: {username: req.body.username }}).then(function(data){
     console.log(data);
-     res.redirect('/' + data.dataValues.id)
+    console.log("login");
+     res.redirect('/home/' + data.dataValues.id)
       
 
 
@@ -58,7 +60,7 @@ app.post('/createNewUser',function(req, res){
      password: req.body.password
   }).then(function(data){
     console.log('data',data);
-    res.redirect('/' + data.dataValues.id)
+    res.redirect('/home/' + data.dataValues.id)
   });
 });
 
