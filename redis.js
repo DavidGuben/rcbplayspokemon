@@ -4,6 +4,7 @@ var bodyParser = require('body-parser');
 var sequelize = require('sequelize');
 var app = express();
 var path = require('path');
+var bcrypt = require('bcrypt');
 var userlogininfos = require('./models')['userlogininfos'];
 
 

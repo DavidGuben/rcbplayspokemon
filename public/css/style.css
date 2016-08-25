@@ -1,9 +1,16 @@
+body{
+  background-color: black;
+}
 .bg{
   background-image: url("../img/bg.jpg");
   height: 700px;
 }
 .logo{
   margin: 10px 0px 10px;
+
+}
+.center-block{
+  height: 70px;
 }
 
 .form-buffer{
