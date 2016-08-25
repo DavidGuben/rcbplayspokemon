@@ -41,7 +41,7 @@ app.get('/home/:id', function(req, res) {
 
 app.post('/login', function(req, res){
 
-    userlogininfos.findOne({ where: {username: req.body.username }}).then(function(data){
+    userlogininfos.findOne({ where: {username: req.body.username, password: req.body.password }}).then(function(data){
     console.log(data);
     console.log("login");
      res.redirect('/home/' + data.dataValues.id)
