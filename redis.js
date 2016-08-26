@@ -43,10 +43,11 @@ app.post('/login', function(req, res){
 
     //Encrypted passwords cannot be retrieved from table
     //Tried console.loging various outputs, and comparing plaintext input to hash but unsuccesful
+
+    var verify = userlogininfos.verifyPassword(req.body.password);
+    console.log("HERE IS VERIFY: ", verify);
     userlogininfos.findOne({ where: {username: req.body.username, password: req.body.password }}).then(function(data){
-    console.log(data);
-    console.log("DATA PASSWORD IS ",data.dataValues.id.password);
-    userlogininfos.verifyPassword(data.dataValues.password);
+    console.log("PASSWORD IS: ", data.dataValues.password);
     console.log("login");
      res.redirect('/home/' + data.dataValues.id)
       
