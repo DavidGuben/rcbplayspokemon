@@ -41,13 +41,15 @@ app.get('/home/:id', function(req, res) {
 
 app.post('/login', function(req, res){
 
+    //Encrypted passwords cannot be retrieved from table
+    //Tried console.loging various outputs, and comparing plaintext input to hash but unsuccesful
     userlogininfos.findOne({ where: {username: req.body.username, password: req.body.password }}).then(function(data){
     console.log(data);
+    console.log("DATA PASSWORD IS ",data.dataValues.id.password);
+    userlogininfos.verifyPassword(data.dataValues.password);
     console.log("login");
      res.redirect('/home/' + data.dataValues.id)
       
-
-
   });
 
 });
@@ -55,7 +57,6 @@ app.post('/login', function(req, res){
 app.post('/createNewUser',function(req, res){
   console.log(req.body.username);
   console.log(req.body.password);
-  console.log(req.body.email);
   var hash = userlogininfos.generateHash(req.body.password);
   console.log("HASH LOG: ", hash)
    userlogininfos.create({
