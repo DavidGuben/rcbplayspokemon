@@ -3,9 +3,7 @@
   "version": "0.1.0",
   "description": "collaborative gameboy emulation powered by socket.io – weplay.io",
   "dependencies": {
-    "bcrypt": "^0.8.7",
     "bcrypt-nodejs": "0.0.3",
-    "bcryptjs": "^2.3.0",
     "blob": "0.0.1",
     "body-parser": "^1.15.2",
     "browserify": "^13.1.0",
