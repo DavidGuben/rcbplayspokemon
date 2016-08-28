@@ -8,16 +8,12 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING
   }, {
     classMethods: {
+      //Creates hashed password to be stored in database
       generateHash: function(password) {
           return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
       }
     }
   });
-
-  //Add compare function here so it can be exported and used in redis.js
-  //var hash = bcrypt.compareSync(myPlaintextPassword, hash);
-  //Also, can generateHash() be moved outside of userlogininfos and still be used by redis.js to hash passwords (need to test).
-  //If yes, create 2 seperate functions for generateHash() and verifyPW() and call them independently
   return userlogininfos;
 };
 
