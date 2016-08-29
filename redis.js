@@ -6,6 +6,7 @@ var app = express();
 var path = require('path');
 var bcrypt = require('bcrypt');
 var userlogininfos = require('./models')['userlogininfos'];
+var bcrypt = require('bcrypt-nodejs');
 
 
 app.use(bodyParser.urlencoded({
@@ -41,24 +42,34 @@ app.get('/home/:id', function(req, res) {
 });
 
 app.post('/login', function(req, res){
+    
+  //Searches database for username
+  userlogininfos.findOne({ where: {username: req.body.username }}).then(function(data){
 
-    userlogininfos.findOne({ where: {username: req.body.username }}).then(function(data){
-    console.log(data);
-    console.log("login");
-     res.redirect('/home/' + data.dataValues.id)
+    //Compares the plaintext PW provided by user to the encrypted PW stored in database (returns true or false)
+    var validPassword = bcrypt.compareSync(req.body.password, data.dataValues.password);
+
+    //If correct password then user is redirected to their homepage 
+    if (validPassword) {
+      console.log("Valid password = ", validPassword);
+      console.log("LOGGING IN ...");
+      res.redirect('/home/' + data.dataValues.id);
+    } else {  
+      console.log("INVALID PASSWORD  = ",validPassword);
+      //If invalid password redirect to the homepage
+      res.redirect('/')
+     }
+
+     //res.redirect('/home/' + data.dataValues.id)
       
-
-
   });
 
 });
 
 app.post('/createNewUser',function(req, res){
-  console.log(req.body.username);
-  console.log(req.body.password);
-  console.log(req.body.email);
+  //Creates hashed pw from plaintext and stores it in var hash;
   var hash = userlogininfos.generateHash(req.body.password);
-  console.log("HASH LOG: ", hash)
+  console.log("HASH: ", hash)
    userlogininfos.create({
      username: req.body.username,
      password: hash

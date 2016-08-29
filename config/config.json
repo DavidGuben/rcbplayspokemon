@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "",
+    "password": "yankeesny2",
     "database": "rcbplayspokemon",
     "host": "127.0.0.1",
     "dialect": "mysql"
@@ -14,10 +14,10 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
+    "username": "d6q8diwwdmy5c9k9.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "password": "gp89n0ftxpk53yed",
     "database": "database_production",
-    "host": "127.0.0.1",
+    "host": "m3oox7ou343zjrqg",
     "dialect": "mysql"
   }
 }

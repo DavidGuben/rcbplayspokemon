@@ -8,10 +8,12 @@ module.exports = function(sequelize, DataTypes) {
     password: DataTypes.STRING
   }, {
     classMethods: {
+      //Creates hashed password to be stored in database
       generateHash: function(password) {
-          return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
+          return bcrypt.hashSync(password, bcrypt.genSaltSync(8));
       }
     }
   });
   return userlogininfos;
 };
+
