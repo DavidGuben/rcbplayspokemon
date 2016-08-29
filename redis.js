@@ -52,15 +52,17 @@ app.post('/login', function(req, res){
   });
 
 });
+
 app.post('/createNewUser',function(req, res){
-   console.log(req.body.username);
-   console.log(req.body.password);
-   console.log(req.body.email);
+  console.log(req.body.username);
+  console.log(req.body.password);
+  console.log(req.body.email);
+  var hash = userlogininfos.generateHash(req.body.password);
+  console.log("HASH LOG: ", hash)
    userlogininfos.create({
      username: req.body.username,
-     password: req.body.password
+     password: hash
   }).then(function(data){
-    console.log('data',data);
     res.redirect('/home/' + data.dataValues.id)
   });
 });
